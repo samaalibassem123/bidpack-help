@@ -39,7 +39,7 @@ const Modules: ModulesItem[] = [
 
 export default function page() {
   return (
-    <main className=" space-y-6 font-extralight">
+    <main className="  space-y-6 font-light p-3">
       {/** Intro */}
       <div className="space-y-4 ">
         <h1 className="text-2xl font-semibold">Introduction </h1>
@@ -66,7 +66,7 @@ export default function page() {
           {Modules.map((m) => (
             <li
               key={m.label}
-              className=" hover:underline hover:font-medium transition-all"
+              className="transition-all duration-200 hover:underline hover:scale-101 "
             >
               <Link href={m.url}>{m.label}</Link>
             </li>

@@ -319,7 +319,7 @@ function ScrollSpy(props: ScrollSpyProps) {
      * `-50%` on both top and bottom creates a 0-height trigger line
      * exactly at the center. The offset shifts that line up if needed.
      */
-    const observerRootMargin = rootMargin ?? `-${50 + offset}% 0px -50% 0px`;
+    const observerRootMargin = rootMargin ?? `-${50 + offset}% 0px -100% 0px`;
     const scrollTarget = scrollContainer ?? window;
 
     // ------------------------------------------------------------------

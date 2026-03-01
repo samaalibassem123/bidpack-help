@@ -36,40 +36,36 @@ const items: Item[] = [
     url: "/",
   },
   {
-    title: "1.Authentication",
+    title: "Authentication",
     url: "/auth",
   },
   {
-    title: "2.Build Company Profile",
-    url: "/",
+    title: "Build Company Profile",
+    url: "/company-profile",
   },
   {
-    title: "3.Studios & Vendors",
-    url: "/",
+    title: "Studios & Vendors",
+    url: "/studio-vendors",
   },
   {
-    title: "4.Vendor Pool",
-    url: "/",
+    title: "Vendor Pool",
+    url: "/vendor-pool",
   },
   {
-    title: "5.Set up Projects",
-    url: "/",
+    title: "Set up Projects",
+    url: "/projects",
   },
   {
-    title: "6.Assign Vendors",
-    url: "/",
+    title: "Manage Tasks & Outsourcing",
+    url: "/tasks",
   },
   {
-    title: "7.Manage Tasks & Outsourcing",
-    url: "/",
+    title: "Communication",
+    url: "/communication",
   },
   {
-    title: "8.Communication",
-    url: "/",
-  },
-  {
-    title: "9.Vendor Availability by Service",
-    url: "/",
+    title: "Vendor Availability by Service",
+    url: "/vendor-availability",
   },
 ];
 
@@ -83,10 +79,7 @@ export default function SideBarMenu({ children }: Props) {
   return (
     <main className="w-full">
       <SidebarProvider>
-        <Sidebar
-          className="  bg-gradient-to-b backdrop-blur-2xl from-black/20  to-background/20 "
-          variant="sidebar"
-        >
+        <Sidebar variant="sidebar">
           <SidebarHeader className="  flex items-center justify-center">
             <Logo id="help logo" className="w-30 h-10" />
           </SidebarHeader>
@@ -98,17 +91,15 @@ export default function SideBarMenu({ children }: Props) {
               </SidebarGroupLabel>
 
               <SidebarGroupContent className="pl-3 mt-5 ">
-                <SidebarMenu>
+                <SidebarMenu className=" space-y-3">
                   {items.map((item, i) => (
-                    <SidebarMenuItem
-                      className={cn(
-                        " relative  rounded-lg  transition-all p-2",
-                        item.url === pathname && "font-[540] text-primary"
-                      )}
-                      key={item.title}
-                    >
+                    <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton
-                        isActive={pathname === item.url}
+                        className={cn(
+                          " relative transition-all rounded-xl ",
+                          item.url === pathname &&
+                            " bg-accent text-primary  scale-101"
+                        )}
                         render={<Link href={item.url} />}
                       >
                         {item.icon && <item.icon />}
@@ -136,11 +127,13 @@ export default function SideBarMenu({ children }: Props) {
           </SidebarFooter>
         </Sidebar>
 
-        <main className=" w-full h-full p-2">
-          <SidebarTrigger className="  cursor-pointer hover:bg-accent" />
+        <main className=" w-full h-svh">
+          <div className=" border-b p-2 sticky top-0 backdrop-blur-2xl">
+            <SidebarTrigger className="    cursor-pointer hover:bg-accent" />
+          </div>
 
           {/* Main content going here */}
-          <div className=" mb-30 p-4 pt-20 max-h-full">{children}</div>
+          <div className="  p-2 pt-4">{children}</div>
         </main>
       </SidebarProvider>
     </main>

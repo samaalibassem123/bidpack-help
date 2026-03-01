@@ -14,12 +14,12 @@ const items: TimeLineItem[] = [
     title: "Start Your Workspace",
     description: (
       <>
-        Click <span className="font-medium">“Sign up for a workspace”</span>{" "}
+        Click <span className="font-semibold">“Sign up for a workspace”</span>{" "}
         from the homepage to begin creating your account and setting up your
         dedicated workspace.
       </>
     ),
-    img_url: "/assets/Auth1.png",
+    img_url: "/assets/auth/Auth1.png",
   },
   {
     icon: "2",
@@ -28,11 +28,11 @@ const items: TimeLineItem[] = [
     description: (
       <>
         Provide your email address and click{" "}
-        <span className="font-medium">“Continue”</span>. We’ll send you a secure
-        verification link to activate your workspace.
+        <span className="font-semibold">“Continue”</span>. We’ll send you a
+        secure verification link to activate your workspace.
       </>
     ),
-    img_url: "/assets/Auth2.png",
+    img_url: "/assets/auth/Auth2.png",
   },
   {
     icon: "3",
@@ -41,11 +41,11 @@ const items: TimeLineItem[] = [
     description: (
       <>
         Check your inbox and click the{" "}
-        <span className="font-medium">verification link</span> to confirm your
+        <span className="font-semibold">verification link</span> to confirm your
         email address and complete your account setup.
       </>
     ),
-    img_url: "/assets/Auth3.png",
+    img_url: "/assets/auth/Auth3.png",
   },
   {
     icon: "4",
@@ -54,24 +54,11 @@ const items: TimeLineItem[] = [
     description: (
       <>
         Once verified, click{" "}
-        <span className="font-medium">“Go to your workspace”</span> to log in
+        <span className="font-semibold">“Go to your workspace”</span> to log in
         and start collaborating.
       </>
     ),
-    img_url: "/assets/Auth4.png",
-  },
-  {
-    icon: "5",
-    step: "step5",
-    title: "Access Your Workspace",
-    description: (
-      <>
-        Once verified, click{" "}
-        <span className="font-medium">“Go to your workspace”</span> to log in
-        and start collaborating.
-      </>
-    ),
-    img_url: "/assets/Auth4.png",
+    img_url: "/assets/auth/Auth4.png",
   },
 ];
 

@@ -10,15 +10,13 @@ import {
   TimelineStepsTime,
   TimelineStepsTitle,
 } from "@/components/ui/timeline-steps";
-import {
-  ScrollSpy,
-  ScrollSpyNav,
-  ScrollSpyLink,
-  ScrollSpyViewport,
-  ScrollSpySection,
-} from "@/components/ui/scroll-spy";
-import { useState } from "react";
+
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import SlideUpScrollAnimation from "./animation/SlideUpScrollAnimation";
+import { Scrollspy } from "./reui/scrollspy";
+import { ScrollArea } from "./ui/scroll-area";
+import ImageBox from "./ImageBox";
 
 export interface TimeLineItem {
   step: string;
@@ -33,51 +31,64 @@ interface Props {
 }
 
 export default function TimeLine({ ...props }: Props) {
-  const [value, setValue] = useState("step1");
-
+  const containerRef = useRef(null);
   return (
-    <ScrollSpy
-      offset={10}
-      value={value}
-      onValueChange={setValue}
-      defaultValue="step1"
-    >
-      <ScrollSpyNav className=" z-40  hidden md:flex  fixed top-0 right-0  p-10  h-svh ">
+    <div className="flex relative flex-row-reverse w-full h-full justify-between">
+      <Scrollspy
+        className="flex-col ml-2 lg:flex hidden  space-y-3"
+        offset={50}
+        targetRef={containerRef}
+      >
         {props.timelineItems.map((item) => (
-          <ScrollSpyLink
+          <a
             key={item.step}
-            value={item.step}
+            href={`#${item.step}`}
+            data-scrollspy-anchor={item.step}
             className={cn(
-              value === item.step && "bg-secondary text-secondary scale-105"
+              "flex gap-2 items-center transition-all data-[active=true]:scale-105 p-2 rounded-lg text-nowrap data-[active=true]:text-primary font-light text-sm "
             )}
           >
+            <TimelineStepsIcon size={"sm"} className="bg-accent">
+              {item.icon}
+            </TimelineStepsIcon>
             {item.title}
-          </ScrollSpyLink>
+          </a>
         ))}
-      </ScrollSpyNav>
-      <TimelineSteps>
-        <ScrollSpyViewport>
-          {props.timelineItems.map((item) => (
-            <ScrollSpySection key={item.step} value={item.step}>
-              <TimelineStepsItem>
-                <TimelineStepsConnector />
-                <TimelineStepsHeader>
-                  <TimelineStepsIcon>{item.icon}</TimelineStepsIcon>
-                  <TimelineStepsTitle className=" font-semibold text-lg">
-                    {item.title}
-                  </TimelineStepsTitle>
-                </TimelineStepsHeader>
-                <TimelineStepsContent>
-                  <TimelineStepsDescription className=" tracking-wide font-light p-3 whitespace-pre-line sm:w-sm">
-                    {item.description}
-                  </TimelineStepsDescription>
-                  <img src={item.img_url} className="sm:w-lg w-auto" />
-                </TimelineStepsContent>
-              </TimelineStepsItem>
-            </ScrollSpySection>
-          ))}
-        </ScrollSpyViewport>
+      </Scrollspy>
+
+      <TimelineSteps className="w-full">
+        <div ref={containerRef} className=" w-full  grow">
+          <ScrollArea
+            onWheel={(e) => e.stopPropagation()}
+            className=" h-[90svh]  "
+          >
+            <div className=" space-y-3">
+              {props.timelineItems.map((item) => (
+                <div id={item.step}>
+                  <SlideUpScrollAnimation key={item.step}>
+                    <TimelineStepsItem>
+                      <TimelineStepsConnector />
+                      <TimelineStepsHeader>
+                        <TimelineStepsIcon>{item.icon}</TimelineStepsIcon>
+                        <TimelineStepsTitle className=" font-semibold text-lg">
+                          {item.title}
+                        </TimelineStepsTitle>
+                      </TimelineStepsHeader>
+                      <TimelineStepsContent>
+                        <TimelineStepsDescription className=" tracking-wide font-light p-3 whitespace-pre-line sm:w-sm">
+                          {item.description}
+                        </TimelineStepsDescription>
+
+                        <ImageBox img_url={item.img_url} />
+                      </TimelineStepsContent>
+                    </TimelineStepsItem>
+                  </SlideUpScrollAnimation>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
       </TimelineSteps>
-    </ScrollSpy>
+    </div>
   );
 }
