@@ -64,7 +64,7 @@ export default function TimeLine({ ...props }: Props) {
           >
             <div className=" space-y-3">
               {props.timelineItems.map((item) => (
-                <div id={item.step}>
+                <div id={item.step} key={item.step}>
                   <SlideUpScrollAnimation key={item.step}>
                     <TimelineStepsItem>
                       <TimelineStepsConnector />
@@ -78,7 +78,6 @@ export default function TimeLine({ ...props }: Props) {
                         <TimelineStepsDescription className=" tracking-wide font-light p-3 whitespace-pre-line sm:w-sm">
                           {item.description}
                         </TimelineStepsDescription>
-
                         <ImageBox img_url={item.img_url} />
                       </TimelineStepsContent>
                     </TimelineStepsItem>

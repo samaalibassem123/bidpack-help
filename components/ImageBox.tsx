@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Skeleton } from "./ui/skeleton";
 
 interface Props {
   img_url: string;
@@ -13,7 +15,7 @@ interface Props {
 export default function ImageBox({ img_url, className }: Props) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -21,11 +23,23 @@ export default function ImageBox({ img_url, className }: Props) {
   return (
     <>
       {/* Normal image */}
-      <img
+      <Image
+        alt="img"
         src={img_url}
-        className={cn("sm:w-lg w-auto rounded-lg cursor-pointer", className)}
+        width={900}
+        height={1000}
+        className={cn(
+          "sm:w-lg w-auto rounded-lg cursor-pointer transition-opacity duration-300",
+          loading ? "opacity-0" : "opacity-100",
+          className
+        )}
         onClick={() => setOpen(true)}
+        onLoadingComplete={() => setLoading(false)}
       />
+
+      {loading && (
+        <Skeleton className="sm:w-lg h-[400px] w-auto absolute top-0 left-0" />
+      )}
 
       {/* Fullscreen Modal via Portal */}
       {mounted &&
@@ -37,7 +51,10 @@ export default function ImageBox({ img_url, className }: Props) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <img
+            <Image
+              alt="img"
+              width={900}
+              height={1000}
               src={img_url}
               className="max-w-[95%] max-h-[95%] rounded-xl shadow-2xl"
             />
