@@ -37,9 +37,7 @@ export default function ImageBox({ img_url, className }: Props) {
         onLoadingComplete={() => setLoading(false)}
       />
 
-      {loading && (
-        <Skeleton className="sm:w-lg h-[400px] w-auto absolute top-0 left-0" />
-      )}
+      {loading && <Skeleton className="sm:w-lg h-[400px] w-auto" />}
 
       {/* Fullscreen Modal via Portal */}
       {mounted &&
