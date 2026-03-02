@@ -23,6 +23,8 @@ export default function ImageBox({ img_url, className }: Props) {
   return (
     <>
       {/* Normal image */}
+      {loading && <Skeleton className=" sm:w-lg h-[400px] w-auto" />}
+
       <Image
         alt="img"
         src={img_url}
@@ -30,14 +32,12 @@ export default function ImageBox({ img_url, className }: Props) {
         height={1000}
         className={cn(
           "sm:w-lg w-auto rounded-lg cursor-pointer transition-opacity duration-300",
-          loading ? "opacity-0" : "opacity-100",
+          loading ? "opacity-0 " : "opacity-100",
           className
         )}
         onClick={() => setOpen(true)}
         onLoadingComplete={() => setLoading(false)}
       />
-
-      {loading && <Skeleton className="sm:w-lg h-[400px] w-auto" />}
 
       {/* Fullscreen Modal via Portal */}
       {mounted &&
