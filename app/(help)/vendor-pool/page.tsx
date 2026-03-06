@@ -40,7 +40,7 @@ const items: TimeLineItem[] = [
     title: "View Vendor Services",
     description: (
       <>
-        Click the <span className="font-medium">“Reviews”</span> button (marked
+        Click the <span className="font-medium">"Services”</span> button (marked
         with red '1') to open the modal and see a detailed breakdown of the
         vendor's available services and rates.
       </>
