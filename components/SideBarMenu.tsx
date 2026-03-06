@@ -63,10 +63,6 @@ const items: Item[] = [
     title: "Communication",
     url: "/communication",
   },
-  {
-    title: "Vendor Availability by Service",
-    url: "/vendor-availability",
-  },
 ];
 
 interface Props {

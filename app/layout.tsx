@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: " — VFX Outsourcing & Project Management",
-    url: "https://bidpack-app.vercel.app/",
+    url: "https://bidpack-app/",
     siteName: "BidPack",
     description:
       "BidPack connects VFX studios with trusted vendors to streamline outsourcing: manage bids, contracts, asset delivery and project workflows securely and transparently.",

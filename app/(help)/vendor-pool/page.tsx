@@ -11,46 +11,56 @@ const items: TimeLineItem[] = [
   {
     icon: "1",
     step: "step1",
-    title: "Navigate to Connections",
+    title: "Accessing the Vendor Pool",
     description: (
       <>
-        Select the <span className="font-medium">“Connections”</span> icon in
-        the top navigation bar to view your existing network and find new
-        opportunities.
+        Navigate to the <span className="font-medium">“Vendor Pool”</span>{" "}
+        section from your dashboard to view all approved studios and freelancers
+        in your network.
       </>
     ),
-    img_url: "/assets/studio-vendors/stdv1.png",
+    img_url: "/assets/vendor-pool/vp1.png",
   },
   {
     icon: "2",
     step: "step2",
-    title: "Search for Partners",
+    title: "Filter and Search Vendors",
     description: (
       <>
-        Click <span className="font-medium">“Find Partners”</span> to browse a
-        directory of verified studios. You can use filters to search by name,
-        service, or industry expertise.
+        Use the <span className="font-medium">“Filter”</span> button and search
+        bar to narrow down your vendor list by specific criteria, services, or
+        names.
       </>
     ),
-    img_url: "/assets/studio-vendors/stdv2.png",
+    img_url: "/assets/vendor-pool/vp2.png",
   },
   {
     icon: "3",
     step: "step3",
-    title: "Invite New Vendors",
+    title: "View Vendor Services",
     description: (
       <>
-        Click <span className="font-medium">“Invite Vendors”</span> and enter
-        the
-        <span className="font-medium">email addresses</span> of companies you
-        wish to collaborate with, then click{" "}
-        <span className="font-medium">“Send Invitations”</span>.
+        Click the <span className="font-medium">“Reviews”</span> button (marked
+        with red '1') to open the modal and see a detailed breakdown of the
+        vendor's available services and rates.
       </>
     ),
-    img_url: "/assets/studio-vendors/stdv3.png",
+    img_url: "/assets/vendor-pool/vp3.png",
+  },
+  {
+    icon: "4",
+    step: "step4",
+    title: "Check Calendar Availability",
+    description: (
+      <>
+        Switch to the{" "}
+        <span className="font-medium">“General Availability”</span> tab to view
+        the vendor’s calendar and identify open dates for your project.
+      </>
+    ),
+    img_url: "/assets/vendor-pool/vp4.png",
   },
 ];
-
 export default function page() {
   return (
     <div className="w-full ">
